@@ -1,6 +1,12 @@
 #include <iostream>
 #include <string>
 #include <vector> 
+#include "Persona.h"
+#include "Cliente.h"
+#include "Personal.h"
+#include "Venta.h"
+#include "Sala.h"
+#include <typeinfo>
 
 using namespace std;
 
@@ -8,9 +14,12 @@ using namespace std;
 int main(){
 
 	 	char resp ='s';
-
+		vector<Sala*> salas;
+		vector<Venta*> ventas;
+		vector<Persona*> personas;
         int option;
-        int op;
+        int op;	
+		
         
         while(resp=='s'||resp=='S'){
                 
@@ -69,6 +78,12 @@ int main(){
 
                                 switch(op2){
                                         case 1:{
+															for (int i=0;i<personas.size();i++){
+																if (typeid(personas[i])==typeid(Cliente)){
+																	Cliente* cliente = reinterpret_cast<Cliente*>(personas[i]);
+																	cout << i << " " << personas[i]->getNombre() << " " << cliente->getDinero() << endl;
+																}
+															}
 
                                         	//Listar  Cliente
 
@@ -77,13 +92,26 @@ int main(){
                                         }
 
                                         case 2:{
+
+															for (int i=0;i<personas.size();i++){
+                                                if (typeid(personas[i])==typeid(Personal)){
+                                                   cout << i << " " << personas[i]->getNombre() << endl;
+                                                }
+                                             }
+
                                         	//Listar personal
 
                                         break;
                                         }
 
                                         case 3:{
-                                        	//Listar Sala
+                                   			
+															for (int i=0; i<salas.size();i++){
+																cout << i << " " << salas[i]->getHorario() << " " << salas[i]->getPelicula() << " " << salas[i]->getGenero() << " " << salas[i]->getPrecio() << endl;
+															}
+
+												    	//Listar Sala
+												
 
                                         break;	
                                         }
@@ -139,7 +167,19 @@ int main(){
                                 cin>>op4;
 
                                 switch(op4){
+													int pos;
                                         case 1:{
+															for (int i=0; i<personas.size(); i++){
+																
+																 if (typeid(personas[i])==typeid(Cliente)){
+                                                   	cout << i << " " << personas[i]->getNombre() << " " << endl;
+                                                }
+															}	
+																cout << "Ingrese la posicion que desea eliminar: ";
+																cin >> pos;
+	
+																personas.erase(pos+personas.begin());
+															
 
                                         	//Eliminar  Cliente
 
@@ -149,12 +189,38 @@ int main(){
                                         }
 
                                         case 2:{
+
+															for (int i=0; i<personas.size(); i++){
+
+                                                 if (typeid(personas[i])==typeid(Personal)){
+                                                      cout << i << " " << personas[i]->getNombre() << endl;
+                                                }
+															}
+
+                                                cout << "Ingrese la posicion que desea eliminar: ";
+                                                cin >> pos;
+
+                                                personas.erase(pos+personas.begin());
+                                             
+
                                         	//Eliminar personal
 
                                         break;
                                         }
 
                                         case 3:{
+
+                                               for (int i=0; i<salas.size();i++){
+                                                	cout << i << " " << salas[i]->getHorario() << " " << salas[i]->getPelicula() << " " << salas[i]->getGenero() << " " << salas[i]->getPrecio() << endl;
+                                             }
+   
+
+                                                cout << "Ingrese la posicion que desea eliminar: ";
+                                                cin >> pos;
+
+                                                salas.erase(pos+salas.begin());
+                                            
+
                                         	//Eliminar Sala
 
                                         break;	
@@ -165,7 +231,12 @@ int main(){
                         }
 
                         case 5:{
+
+										for (int i=0; i<ventas.size(); i++){
+											cout << i << " " << ventas[i]->getNombrePersonal() << " " << ventas[i]->getNombreCliente() << " " << ventas[i]->getHorario() << " " << ventas[i]->getFecha() << " " << ventas[i]->getPelicula() << " " << ventas[i]->getTotal() << endl;
+										}
                         	//ventas
+									
 
                         break;
                         }
@@ -178,5 +249,5 @@ int main(){
 
 
                 }
-
+}
 }
