@@ -3,7 +3,7 @@
 #include<string>
 using namespace std;
 
-class Personal : Persona{
+class Personal : public Persona{
 
 	protected:
 		string Puesto;

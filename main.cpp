@@ -62,7 +62,7 @@ int main(){
 
                                         case 2:{
                                         	//agregar personal
-                                        	Personal personal;
+                                        	
 
 						string Puesto;
 						string Nombre;
@@ -72,7 +72,7 @@ int main(){
 						cout<< " Ingrese Nombre:  " ;
 						cin>>Nombre;
 
-						personal(Puesto, Nombre);
+						Personal personal(Puesto, Nombre);
 											
 						personas.push_back(personal);
 
@@ -84,7 +84,7 @@ int main(){
                                         case 3:{
                                         	//Agregar Sala
 
-						Sala sala;
+						
 
 						string Horario;
 						string Pelicula;
@@ -100,7 +100,7 @@ int main(){
 						cout<< " Ingrese Genero:  " ;
 						cin>>Genero;
 
-						sala(Horario, Pelicula, Precio, Genero);
+						Sala sala(Horario, Pelicula, Precio, Genero);
 
 						salas.push_back(sala);
 
@@ -136,10 +136,10 @@ int main(){
                                         case 2:{
 
 															for (int i=0;i<personas.size();i++){
-                                                if (typeid(personas[i])==typeid(Personal)){
-                                                   cout << i << " " << personas[i]->getNombre() << endl;
-                                                }
-                                             }
+                                                				if (typeid(personas[i])==typeid(Personal)){
+                                                   					cout << i << " " << personas[i]->getNombre() << endl;
+                                                				}
+                                             				}
 
                                         	//Listar personal
 
@@ -177,7 +177,7 @@ int main(){
 
                                         	//Modificar  Cliente
                                         	int pos;
-											Cliente cliente;
+											
 
 											double Dinero;
 											string Nombre;
@@ -201,7 +201,7 @@ int main(){
                                         	//Modificar personal
 
                                         	int pos;
-											Personal personal;
+											
 
 											string Puesto;
 											string Nombre;
@@ -226,7 +226,7 @@ int main(){
                                         	//Modificar Sala
 
                                         	int pos;
-											Sala sala;
+											
 
 											string Horario;
 											string Pelicula;
@@ -333,7 +333,7 @@ int main(){
                         case 5:{
 
                         	//ventas
-							Venta venta;
+							
 
 							double Total;
 
@@ -357,7 +357,7 @@ int main(){
 							cin>>Pelicula;
 
 
-							venta(Total, NombreCliente, NombrePersonal, Fecha, Horario, Pelicula);
+							Venta venta(Total, NombreCliente, NombrePersonal, Fecha, Horario, Pelicula);
 
 							ventas.push_back(venta);
 									
