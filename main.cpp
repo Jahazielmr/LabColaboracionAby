@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector> 
+#include <>
 
 using namespace std;
 
@@ -36,7 +37,17 @@ int main(){
                                         case 1:{
 
                                         	//Agregar  Cliente
+                                        	
+											double Dinero;
+											string Nombre;
 
+											cout<< " Ingrese cantidad de Dinero:  " ;
+											cin>>Dinero;
+											cout<< " Ingrese Nombre:  " ;
+											cin>>Nombre;
+
+											Cliente cliente(Dinero, Nombre);
+											personas.push_back(cliente);
 
 
                                         break;
@@ -44,12 +55,50 @@ int main(){
 
                                         case 2:{
                                         	//agregar personal
+                                        	Personal personal;
+
+											string Puesto;
+											string Nombre;
+
+											cout<< " Ingrese Puesto:  " ;
+											cin>>Puesto;
+											cout<< " Ingrese Nombre:  " ;
+											cin>>Nombre;
+
+
+											personal(Puesto, Nombre);
+
+											personas.push_back(personal);
+
+
+
 
                                         break;
                                         }
 
                                         case 3:{
                                         	//Agregar Sala
+
+										Sala sala;
+
+										string Horario;
+										string Pelicula;
+										double Precio;
+										string Genero;
+
+										cout<< " Ingrese Horario:  " ;
+										cin>>Horario;
+										cout<< " Ingrese Pelicula:  " ;
+										cin>>Pelicula;
+										cout<< " Ingrese Precio:  " ;
+										cin>>Precio;
+										cout<< " Ingrese Genero:  " ;
+										cin>>Genero;
+
+										sala(Horario, Pelicula, Precio, Genero);
+
+										salas.push_back(sala);
+
 
                                         break;	
                                         }
@@ -106,6 +155,21 @@ int main(){
                                         case 1:{
 
                                         	//Modificar  Cliente
+                                        	int pos;
+											Cliente cliente;
+
+											double Dinero;
+											string Nombre;
+
+											cout<<" Ingrese La posicion de lo que desea modificar:  ";
+											cin>>pos;
+											cout<< " Ingrese cantidad de Dinero para modificar :  " ;
+											cin>>Dinero ;
+											cout<< " Ingrese Nombre para modificar :  " ;
+											cin>>Nombre ;
+
+											personas[pos].setDinero(Dinero);
+											personas[pos].setNombre(Nombre);
 
 
 
@@ -115,11 +179,54 @@ int main(){
                                         case 2:{
                                         	//Modificar personal
 
+                                        	int pos;
+											Personal personal;
+
+											string Puesto;
+											string Nombre;
+
+											cout<<" Ingrese La posicion de lo que desea modificar:  ";
+											cin>>pos;
+											cout<< " Ingrese Puesto para modificar :  " ;
+											cin>>Puesto;
+											cout<< " Ingrese Nombre para modificar :  " ;
+											cin>>Nombre;
+
+											
+
+											personas[pos].setPuesto(Puesto);
+											personas[pos].setNombre(Nombre);
+
+
                                         break;
                                         }
 
                                         case 3:{
                                         	//Modificar Sala
+
+                                        	int pos;
+											Sala sala;
+
+											string Horario;
+											string Pelicula;
+											double Precio;
+											string Genero;
+
+											cout<<" Ingrese La posicion de lo que desea modificar:  ";
+											cin>>pos;
+											cout<< " Ingrese Horario para modificar :  " ;
+											cin>>Horario;
+											cout<< " Ingrese Pelicula para modificar :  " ;
+											cin>>Pelicula;
+											cout<< " Ingrese Precio para modificar :  " ;
+											cin>>Precio;
+											cout<< " Ingrese Genero para modificar :  " ;
+											cin>>Genero;
+
+											salas[pos].setHorario(Horario);
+											salas[pos].setPelicula(Pelicula);
+											salas[pos].setPrecio(Precio);
+											salas[pos].setGenero(Genero);
 
                                         break;	
                                         }

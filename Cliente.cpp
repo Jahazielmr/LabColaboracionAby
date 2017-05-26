@@ -1,17 +1,23 @@
 #include "Cliente.h"
-Cliente::Cliente( int Dinero, string Nombre) : Persona(Nombre) {
+Cliente::Cliente( double Dinero, string Nombre) : Persona(Nombre) {
 	this-> Dinero=Dinero;
 	this-> Nombre=Nombre;
 }
 
 
-int Cliente::getDinero(){
+double Cliente::getDinero(){
 
 return Dinero;
 }
 
-void Cliente::setDinero(int Dinero){
+void Cliente::setDinero(double Dinero){
 	this->Dinero =Dinero;
 
 }
+
+
+
+
+
+
 

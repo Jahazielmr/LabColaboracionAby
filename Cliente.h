@@ -6,12 +6,12 @@ using namespace std;
 class Cliente : public Persona{
 
 	protected:
-		int Dinero;
+		double Dinero;
 
 	public:
-		Cliente(int, string);
-		int getDinero();
-		void setDinero(int Dinero);
+		Cliente(double, string);
+		double getDinero();
+		void setDinero(double Dinero);
 
 
 };
