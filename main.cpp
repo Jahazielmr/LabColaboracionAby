@@ -357,7 +357,7 @@ int main(){
 							cin>>Pelicula;
 
 
-							venta(Total, NombreCliente, NombrePersonal, Fecha, Horario, Pelicula, );
+							venta(Total, NombreCliente, NombrePersonal, Fecha, Horario, Pelicula);
 
 							ventas.push_back(venta);
 									
