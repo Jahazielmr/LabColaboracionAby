@@ -116,25 +116,23 @@ int main(){
                         	//2-Listar
                         		int op2;
 
-                        	cout<<"1-Listar Cliente"<<endl;
+                        		cout<<"1-Listar Cliente"<<endl;
                                 cout<<"2-Listar Personal"<<endl;
                                 cout<<"3-Listar sala"<<endl;
                                 cin>>op2;
 
                                 switch(op2){
-                                        case 1:{																																																						for (int i=0;i<personas.size();i++){
+                                        case 1:{				
+                                        					for(int i=0;i<personas.size();i++){																					for (int i=0;i<personas.size();i++){
 																if (typeid(personas[i])==typeid(Cliente)){
 																	Cliente* cliente = reinterpret_cast<Cliente*>(personas[i]);
 																	cout << i << " " << personas[i]->getNombre() << " " << cliente->getDinero() << endl;
-																}
+																	}
+															
 															}
-
-                                        	//Listar  Cliente
-
-
-                                        break;
-                                        }
-
+                                        
+                                        	break;
+                                    	}
                                         case 2:{
 
 															for (int i=0;i<personas.size();i++){
@@ -271,16 +269,16 @@ int main(){
                                 switch(op4){
 													int pos;
                                         case 1:{
-															for (int i=0; i<personas.size(); i++){
+												for (int i=0; i<personas.size(); i++){
 																
-																 if (typeid(personas[i])==typeid(Cliente)){
-                                                   	cout << i << " " << personas[i]->getNombre() << " " << endl;
-                                                }
-															}	
-																cout << "Ingrese la posicion que desea eliminar: ";
-																cin >> pos;
-	
-																personas.erase(pos+personas.begin());
+														if (typeid(personas[i])==typeid(Cliente)){
+                                                   				cout << i << " " << personas[i]->getNombre() << " " << endl;
+                                                		}
+												}	
+												cout << "Ingrese la posicion que desea eliminar: ";
+												cin >> pos;
+
+												personas.erase(pos+personas.begin());
 															
 
                                         	//Eliminar  Cliente
@@ -292,12 +290,12 @@ int main(){
 
                                         case 2:{
 
-															for (int i=0; i<personas.size(); i++){
+											for (int i=0; i<personas.size(); i++){
 
-                                                 if (typeid(personas[i])==typeid(Personal)){
+                                                if (typeid(personas[i])==typeid(Personal)){
                                                       cout << i << " " << personas[i]->getNombre() << endl;
                                                 }
-															}
+											}
 
                                                 cout << "Ingrese la posicion que desea eliminar: ";
                                                 cin >> pos;
@@ -334,10 +332,34 @@ int main(){
 
                         case 5:{
 
-										for (int i=0; i<ventas.size(); i++){
-											cout << i << " " << ventas[i]->getNombrePersonal() << " " << ventas[i]->getNombreCliente() << " " << ventas[i]->getHorario() << " " << ventas[i]->getFecha() << " " << ventas[i]->getPelicula() << " " << ventas[i]->getTotal() << endl;
-										}
                         	//ventas
+							Venta venta;
+
+							double Total;
+
+							string NombreCliente;
+							string NombrePersonal;
+							string Fecha;
+							string Horario;
+							string Pelicula;
+
+							cout<< " Ingrese Total:  " ;	
+							cin>>Total;
+							cout<< " Ingrese NombreCliente:  " ;
+							cin>>NombreCliente;
+							cout<< " Ingrese NombrePersonal:  " ;
+							cin>>NombrePersonal;
+							cout<< " Ingrese Fecha:  " ;
+							cin>>Fecha;
+							cout<< " Ingrese Horario:  " ;
+							cin>>Horario;
+							cout<< " Ingrese Pelicula:  " ;
+							cin>>Pelicula;
+
+
+							venta(Total, NombreCliente, NombrePersonal, Fecha, Horario, Pelicula, );
+
+							ventas.push_back(venta);
 									
 
                         break;
@@ -346,6 +368,9 @@ int main(){
                         case 6:{
                         	//reporte de ventas 
 
+								for (int i=0; i<ventas.size(); i++){
+									cout << i << " " << ventas[i]->getNombrePersonal() << " " << ventas[i]->getNombreCliente() << " " << ventas[i]->getHorario() << " " << ventas[i]->getFecha() << " " << ventas[i]->getPelicula() << " " << ventas[i]->getTotal() << endl;
+								}
                         }
 
 
