@@ -123,7 +123,7 @@ int main(){
 
                                 switch(op2){
                                         case 1:{				
-                                        					for(int i=0;i<personas.size();i++){																					for (int i=0;i<personas.size();i++){
+                                        					for(int i=0;i<personas.size();i++){										
 																if (typeid(personas[i])==typeid(Cliente)){
 																	Cliente* cliente = reinterpret_cast<Cliente*>(personas[i]);
 																	cout << i << " " << personas[i]->getNombre() << " " << cliente->getDinero() << endl;
