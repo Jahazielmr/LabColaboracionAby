@@ -1,7 +1,12 @@
 #include <iostream>
 #include <string>
 #include <vector> 
-#include <>
+#include "Persona.h"
+#include "Cliente.h"
+#include "Personal.h"
+#include "Venta.h"
+#include "Sala.h"
+#include <typeinfo>
 
 using namespace std;
 
@@ -9,9 +14,12 @@ using namespace std;
 int main(){
 
 	 	char resp ='s';
-
-        int option;
-        int op;
+		vector<Sala*> salas;
+		vector<Venta*> ventas;
+		vector<Persona*> personas;
+        	int option;
+        	int op;	
+		
         
         while(resp=='s'||resp=='S'){
                 
@@ -38,17 +46,16 @@ int main(){
 
                                         	//Agregar  Cliente
                                         	
-											double Dinero;
-											string Nombre;
+						double Dinero;
+						string Nombre;
 
-											cout<< " Ingrese cantidad de Dinero:  " ;
-											cin>>Dinero;
-											cout<< " Ingrese Nombre:  " ;
-											cin>>Nombre;
-
-											Cliente cliente(Dinero, Nombre);
-											personas.push_back(cliente);
-
+						cout<< " Ingrese cantidad de Dinero:  " ;
+						cin>>Dinero;
+						cout<< " Ingrese Nombre:  " ;
+						cin>>Nombre;
+											
+						Cliente cliente(Dinero, Nombre);
+						personas.push_back(cliente);
 
                                         break;
                                         }
@@ -57,19 +64,17 @@ int main(){
                                         	//agregar personal
                                         	Personal personal;
 
-											string Puesto;
-											string Nombre;
+						string Puesto;
+						string Nombre;
 
-											cout<< " Ingrese Puesto:  " ;
-											cin>>Puesto;
-											cout<< " Ingrese Nombre:  " ;
-											cin>>Nombre;
+						cout<< " Ingrese Puesto:  " ;
+						cin>>Puesto;
+						cout<< " Ingrese Nombre:  " ;
+						cin>>Nombre;
 
-
-											personal(Puesto, Nombre);
-
-											personas.push_back(personal);
-
+						personal(Puesto, Nombre);
+											
+						personas.push_back(personal);
 
 
 
@@ -79,25 +84,25 @@ int main(){
                                         case 3:{
                                         	//Agregar Sala
 
-										Sala sala;
+						Sala sala;
 
-										string Horario;
-										string Pelicula;
-										double Precio;
-										string Genero;
+						string Horario;
+						string Pelicula;
+						double Precio;
+						string Genero;
 
-										cout<< " Ingrese Horario:  " ;
-										cin>>Horario;
-										cout<< " Ingrese Pelicula:  " ;
-										cin>>Pelicula;
-										cout<< " Ingrese Precio:  " ;
-										cin>>Precio;
-										cout<< " Ingrese Genero:  " ;
-										cin>>Genero;
+						cout<< " Ingrese Horario:  " ;
+						cin>>Horario;
+						cout<< " Ingrese Pelicula:  " ;
+						cin>>Pelicula;
+						cout<< " Ingrese Precio:  " ;
+						cin>>Precio;
+						cout<< " Ingrese Genero:  " ;
+						cin>>Genero;
 
-										sala(Horario, Pelicula, Precio, Genero);
+						sala(Horario, Pelicula, Precio, Genero);
 
-										salas.push_back(sala);
+						salas.push_back(sala);
 
 
                                         break;	
@@ -111,13 +116,18 @@ int main(){
                         	//2-Listar
                         		int op2;
 
-                        	 	cout<<"1-Listar Cliente"<<endl;
+                        	cout<<"1-Listar Cliente"<<endl;
                                 cout<<"2-Listar Personal"<<endl;
                                 cout<<"3-Listar sala"<<endl;
                                 cin>>op2;
 
                                 switch(op2){
-                                        case 1:{
+                                        case 1:{																																																						for (int i=0;i<personas.size();i++){
+																if (typeid(personas[i])==typeid(Cliente)){
+																	Cliente* cliente = reinterpret_cast<Cliente*>(personas[i]);
+																	cout << i << " " << personas[i]->getNombre() << " " << cliente->getDinero() << endl;
+																}
+															}
 
                                         	//Listar  Cliente
 
@@ -126,13 +136,26 @@ int main(){
                                         }
 
                                         case 2:{
+
+															for (int i=0;i<personas.size();i++){
+                                                if (typeid(personas[i])==typeid(Personal)){
+                                                   cout << i << " " << personas[i]->getNombre() << endl;
+                                                }
+                                             }
+
                                         	//Listar personal
 
                                         break;
                                         }
 
                                         case 3:{
-                                        	//Listar Sala
+                                   			
+															for (int i=0; i<salas.size();i++){
+																cout << i << " " << salas[i]->getHorario() << " " << salas[i]->getPelicula() << " " << salas[i]->getGenero() << " " << salas[i]->getPrecio() << endl;
+															}
+
+												    	//Listar Sala
+												
 
                                         break;	
                                         }
@@ -246,7 +269,19 @@ int main(){
                                 cin>>op4;
 
                                 switch(op4){
+													int pos;
                                         case 1:{
+															for (int i=0; i<personas.size(); i++){
+																
+																 if (typeid(personas[i])==typeid(Cliente)){
+                                                   	cout << i << " " << personas[i]->getNombre() << " " << endl;
+                                                }
+															}	
+																cout << "Ingrese la posicion que desea eliminar: ";
+																cin >> pos;
+	
+																personas.erase(pos+personas.begin());
+															
 
                                         	//Eliminar  Cliente
 
@@ -256,12 +291,38 @@ int main(){
                                         }
 
                                         case 2:{
+
+															for (int i=0; i<personas.size(); i++){
+
+                                                 if (typeid(personas[i])==typeid(Personal)){
+                                                      cout << i << " " << personas[i]->getNombre() << endl;
+                                                }
+															}
+
+                                                cout << "Ingrese la posicion que desea eliminar: ";
+                                                cin >> pos;
+
+                                                personas.erase(pos+personas.begin());
+                                             
+
                                         	//Eliminar personal
 
                                         break;
                                         }
 
                                         case 3:{
+
+                                               for (int i=0; i<salas.size();i++){
+                                                	cout << i << " " << salas[i]->getHorario() << " " << salas[i]->getPelicula() << " " << salas[i]->getGenero() << " " << salas[i]->getPrecio() << endl;
+                                             }
+   
+
+                                                cout << "Ingrese la posicion que desea eliminar: ";
+                                                cin >> pos;
+
+                                                salas.erase(pos+salas.begin());
+                                            
+
                                         	//Eliminar Sala
 
                                         break;	
@@ -272,7 +333,12 @@ int main(){
                         }
 
                         case 5:{
+
+										for (int i=0; i<ventas.size(); i++){
+											cout << i << " " << ventas[i]->getNombrePersonal() << " " << ventas[i]->getNombreCliente() << " " << ventas[i]->getHorario() << " " << ventas[i]->getFecha() << " " << ventas[i]->getPelicula() << " " << ventas[i]->getTotal() << endl;
+										}
                         	//ventas
+									
 
                         break;
                         }
@@ -285,5 +351,5 @@ int main(){
 
 
                 }
-
+}
 }
